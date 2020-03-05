@@ -1,14 +1,6 @@
 #include "ft_select.h"
 
-static void	config_raw(struct termios raw)
-{
-	raw.c_iflag &= ~(IXON | ICRNL);
-	raw.c_oflag &= ~(OPOST);
-	raw.c_lflag &= ~(ECHO | ICANON | ISIG | IEXTEN);
-	tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
-}
-
-static void	check_params(int argc)
+static void		check_params(int argc)
 {
 	if (argc < 2)
 	{
@@ -16,22 +8,33 @@ static void	check_params(int argc)
 		exit (0);
 	}
 }
-
-int		main(int argc, char **argv)
+static void		display_loop(t_terminal *term, char **argv)
 {
-	struct termios original;
-	struct termios raw;
-	char c;
+	char		c;
+
+	if (!term)
+		return ;
+	while (1)
+	{
+		ft_putstr(argv[1]);
+		tputs(tgetstr("cr", NULL), 1, print_char);
+		if (read(1, &c, 1) == 1 && c == 'q')
+			break ;
+	}
+}
+
+int			main(int argc, char **argv)
+{
+	t_terminal	*term;
 
 	(void)argv;
 	check_params(argc);
-	tcgetattr(STDIN_FILENO, &original);
-	raw = original;
-	config_raw(raw);
-	while (1)
-		if (read(STDIN_FILENO, &c, 1) == 1 && c == ESC)
-		{
-			tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
-			break ;
-		}
+	term = malloc(sizeof(t_terminal));
+	if (!term)
+		exit(1);
+	tcgetattr(1, &term->original);
+	term->raw = term->original;
+	config_terminal(0, term);
+	display_loop(term, argv);
+	config_terminal(1, term);
 }
