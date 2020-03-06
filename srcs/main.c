@@ -13,7 +13,7 @@ static void		display_loop(t_terminal *term)
 	while (1)
 	{
 		tputs(tgetstr("cr", NULL), 1, print_char);
-		ft_arriter(term->args, ft_putstr);
+		display_arguments(term);
 		listen_keys(term);
 	}
 }
@@ -30,6 +30,8 @@ int			main(int argc, char **argv)
 	tcgetattr(1, &term->original);
 	term->raw = term->original;
 	term->args = ++argv;
+	term->length = argc - 1;
+	term->select = 0;
 	config_terminal(0, term);
 	display_loop(term);
 }

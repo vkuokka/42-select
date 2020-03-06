@@ -13,8 +13,9 @@
 NAME = ft_select
 
 SRCS =	srcs/main.c \
-	srcs/terminal.c \
-	srcs/keys.c \
+	srcs/handle_terminal.c \
+	srcs/handle_keys.c \
+	srcs/display_arguments.c \
 	srcs/utils.c \
 
 INCL =	includes/

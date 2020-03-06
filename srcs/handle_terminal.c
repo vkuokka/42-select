@@ -30,6 +30,7 @@ static void	init_raw(struct termios raw)
 static void	init_original(struct termios original)
 {
 	tputs(tgetstr("ve", NULL), 1, print_char);
+	tputs(tgetstr("me", NULL), 1, print_char);
 	tcsetattr(1, TCSAFLUSH, &original);
 }
 

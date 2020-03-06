@@ -2,16 +2,20 @@
 
 static void	check_arrows(int sum, t_terminal *term)
 {
-	if (!term)
-		return ;
-	if (sum == UP)
-		return ;
-	else if (sum == DOWN)
-		return ;
-	else if (sum == RIGHT)
-		return ;
+	if (sum == RIGHT)
+	{
+		if (term->select == term->length - 1)
+			term->select = 0;
+		else
+			term->select++;
+	}
 	else if (sum == LEFT)
-		return ;
+	{
+		if (term->select == 0)
+			term->select = term->length - 1;
+		else
+			term->select--;
+	}
 }
 
 static void	check_other(int sum, t_terminal *term)
@@ -25,7 +29,7 @@ static void	check_other(int sum, t_terminal *term)
 	}
 	else if (sum == SPACE)
 		return ;
-	else if (sum == RET)
+	else if (sum == RET || sum == DEL)
 		return ;
 }
 
