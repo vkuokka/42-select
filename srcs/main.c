@@ -31,7 +31,7 @@ int			main(int argc, char **argv)
 	term->raw = term->original;
 	term->args = ++argv;
 	term->length = argc - 1;
-	term->select = 0;
+	term->cursor = 0;
 	config_terminal(0, term);
 	display_loop(term);
 }

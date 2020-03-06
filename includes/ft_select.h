@@ -22,7 +22,7 @@ typedef struct		s_terminal
 	struct termios	raw;
 	char		**args;
 	size_t		length;
-	size_t		select;
+	size_t		cursor;
 }			t_terminal;
 
 void			config_terminal(int reset, t_terminal *term);

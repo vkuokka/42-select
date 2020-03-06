@@ -7,7 +7,7 @@ void		display_arguments(t_terminal *term)
 	i = -1;
 	while (term->args[++i])
 	{
-		if (term->select == i)
+		if (term->cursor == i)
 			tputs(tgetstr("us", NULL), 1, print_char);
 		ft_putstr(term->args[i]);
 		tputs(tgetstr("me", NULL), 1, print_char);

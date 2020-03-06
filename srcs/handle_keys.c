@@ -4,17 +4,17 @@ static void	check_arrows(int sum, t_terminal *term)
 {
 	if (sum == RIGHT)
 	{
-		if (term->select == term->length - 1)
-			term->select = 0;
+		if (term->cursor == term->length - 1)
+			term->cursor = 0;
 		else
-			term->select++;
+			term->cursor++;
 	}
 	else if (sum == LEFT)
 	{
-		if (term->select == 0)
-			term->select = term->length - 1;
+		if (term->cursor == 0)
+			term->cursor = term->length - 1;
 		else
-			term->select--;
+			term->cursor--;
 	}
 }
 
