@@ -8,18 +8,13 @@ static void		check_params(int argc)
 		exit (0);
 	}
 }
-static void		display_loop(t_terminal *term, char **argv)
+static void		display_loop(t_terminal *term)
 {
-	char		c;
-
-	if (!term)
-		return ;
 	while (1)
 	{
-		ft_putstr(argv[1]);
 		tputs(tgetstr("cr", NULL), 1, print_char);
-		if (read(1, &c, 1) == 1 && c == 'q')
-			break ;
+		ft_arriter(term->args, ft_putstr);
+		listen_keys(term);
 	}
 }
 
@@ -34,7 +29,7 @@ int			main(int argc, char **argv)
 		exit(1);
 	tcgetattr(1, &term->original);
 	term->raw = term->original;
+	term->args = ++argv;
 	config_terminal(0, term);
-	display_loop(term, argv);
-	config_terminal(1, term);
+	display_loop(term);
 }
