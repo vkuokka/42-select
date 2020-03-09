@@ -27,11 +27,18 @@ int			main(int argc, char **argv)
 	term = malloc(sizeof(t_terminal));
 	if (!term)
 		exit(1);
-	tcgetattr(1, &term->original);
+	tcgetattr(2, &term->original);
 	term->raw = term->original;
 	term->args = ++argv;
-	term->length = argc - 1;
+	term->length = --argc;
 	term->cursor = 0;
+	term->select = (char *)malloc(sizeof(char) * argc);
+	if (!term->select)
+	{
+		free(term);
+		exit(1);
+	}
+	ft_bzero(term->select, argc);
 	config_terminal(0, term);
 	display_loop(term);
 }

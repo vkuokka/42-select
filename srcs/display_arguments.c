@@ -9,9 +9,12 @@ void		display_arguments(t_terminal *term)
 	{
 		if (term->cursor == i)
 			tputs(tgetstr("us", NULL), 1, print_char);
-		ft_putstr(term->args[i]);
-		tputs(tgetstr("me", NULL), 1, print_char);
+		if (term->select[i])
+			tputs(tgetstr("so", NULL), 1, print_char);
+		ft_fprintf(2, "%s", term->args[i]);
+		tputs(tgetstr("ue", NULL), 1, print_char);
+		tputs(tgetstr("se", NULL), 1, print_char);
 		if (term->args[i + 1])
-			write(1, " ", 1);
+			write(2, " ", 1);
 	}
 }

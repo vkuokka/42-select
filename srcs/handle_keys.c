@@ -23,14 +23,26 @@ static void	check_other(int sum, t_terminal *term)
 	if (sum == ESC)
 	{
 		config_terminal(1, term);
+		free(term->select);
 		free(term);
-		tputs(tgetstr("cr", NULL), 1, print_char);
 		exit(0);
 	}
 	else if (sum == SPACE)
-		return ;
-	else if (sum == RET || sum == DEL)
-		return ;
+	{
+		if (!term->select[term->cursor])
+			term->select[term->cursor] = 1;
+		else
+			term->select[term->cursor] = 0;
+		check_arrows(RIGHT, term);
+	}
+	else if (sum == ENTER)
+	{
+		print_selected(term);
+		check_other(ESC, term);
+	}
+	/*else if (sum == BACK || sum == DEL)
+		if (delete_element(sum, term))
+			check_other(ESC, term);*/
 }
 
 void		listen_keys(t_terminal *term)
@@ -40,7 +52,7 @@ void		listen_keys(t_terminal *term)
 	size_t	i;
 	int	sum;
 
-	bytes = read(1, key, KEY_SIZE);
+	bytes = read(2, key, KEY_SIZE);
 	key[bytes] = '\0';
 	i = -1;
 	sum = 0;

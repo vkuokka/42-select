@@ -15,9 +15,10 @@ static void	init_raw(struct termios raw)
 	success = tgetent(buffer, type);
 	if (success > 0)
 	{
+		tputs(tgetstr("ti", NULL), 1, print_char);
 		tputs(tgetstr("vi", NULL), 1, print_char);
 		raw.c_lflag &= ~(ECHO | ICANON);
-		tcsetattr(1, TCSAFLUSH, &raw);
+		tcsetattr(2, TCSAFLUSH, &raw);
 		return ;
 	}
 	else if (success < 0)
@@ -29,9 +30,9 @@ static void	init_raw(struct termios raw)
 
 static void	init_original(struct termios original)
 {
+	tputs(tgetstr("te", NULL), 1, print_char);
 	tputs(tgetstr("ve", NULL), 1, print_char);
-	tputs(tgetstr("me", NULL), 1, print_char);
-	tcsetattr(1, TCSAFLUSH, &original);
+	tcsetattr(2, TCSAFLUSH, &original);
 }
 
 void		config_terminal(int reset, t_terminal *term)
