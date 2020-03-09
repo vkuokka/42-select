@@ -15,6 +15,7 @@ NAME = ft_select
 SRCS =	srcs/main.c \
 	srcs/handle_terminal.c \
 	srcs/handle_keys.c \
+	srcs/delete_element.c \
 	srcs/display_arguments.c \
 	srcs/utils.c \
 

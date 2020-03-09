@@ -31,6 +31,7 @@ void			config_terminal(int reset, t_terminal *term);
 void			display_arguments(t_terminal *term);
 void			listen_keys(t_terminal *term);
 int			print_char(int c);
+int			delete_element(t_terminal *term);
 void			print_selected(t_terminal *term);
 
 #endif

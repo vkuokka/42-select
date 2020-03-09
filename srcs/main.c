@@ -8,11 +8,13 @@ static void		check_params(int argc)
 		exit (0);
 	}
 }
+
 static void		display_loop(t_terminal *term)
 {
 	while (1)
 	{
-		tputs(tgetstr("cr", NULL), 1, print_char);
+		tputs(tgetstr("cr", NULL), 1, print_char);	
+		tputs(tgetstr("cd", NULL), 1, print_char);
 		display_arguments(term);
 		listen_keys(term);
 	}

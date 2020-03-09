@@ -3,19 +3,11 @@
 static void	check_arrows(int sum, t_terminal *term)
 {
 	if (sum == RIGHT)
-	{
-		if (term->cursor == term->length - 1)
-			term->cursor = 0;
-		else
-			term->cursor++;
-	}
+		term->cursor == term->length - 1 ? term->cursor = 0 \
+		: term->cursor++;
 	else if (sum == LEFT)
-	{
-		if (term->cursor == 0)
-			term->cursor = term->length - 1;
-		else
-			term->cursor--;
-	}
+		term->cursor == 0 ? term->cursor = term->length - 1 \
+		: term->cursor--;
 }
 
 static void	check_other(int sum, t_terminal *term)
@@ -29,10 +21,8 @@ static void	check_other(int sum, t_terminal *term)
 	}
 	else if (sum == SPACE)
 	{
-		if (!term->select[term->cursor])
-			term->select[term->cursor] = 1;
-		else
-			term->select[term->cursor] = 0;
+		term->select[term->cursor] = 
+		(!term->select[term->cursor] ? 1 : 0);
 		check_arrows(RIGHT, term);
 	}
 	else if (sum == ENTER)
@@ -40,9 +30,9 @@ static void	check_other(int sum, t_terminal *term)
 		print_selected(term);
 		check_other(ESC, term);
 	}
-	/*else if (sum == BACK || sum == DEL)
-		if (delete_element(sum, term))
-			check_other(ESC, term);*/
+	else if (sum == BACK || sum == DEL)
+		if (delete_element(term))
+			check_other(ESC, term);
 }
 
 void		listen_keys(t_terminal *term)
