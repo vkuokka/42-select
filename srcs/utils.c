@@ -9,11 +9,8 @@ void		print_selected(t_terminal *term)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < term->length)
-	{
+	i = -1;
+	while (++i < term->length)
 		if (term->select[i])
 			ft_fprintf(1, "%s ", term->args[i]);
-		i++;
-	}
 }

@@ -22,7 +22,7 @@ static int	init_raw(struct termios raw)
 	success = tgetent(buffer, type);
 	if (success > 0)
 	{
-		tputs(tgetstr("ti", NULL), 1, print_char);
+		//tputs(tgetstr("ti", NULL), 1, print_char);
 		tputs(tgetstr("vi", NULL), 1, print_char);
 		raw.c_lflag &= ~(ECHO | ICANON);
 		tcsetattr(2, TCSAFLUSH, &raw);
@@ -31,13 +31,13 @@ static int	init_raw(struct termios raw)
 	else if (success < 0)
 		ft_fprintf(2, "ft_select: Could not access the termcap database\n");
 	else if (success == 0)
-		ft_fprintf(2, "ft_select: Terminal type %s is not defined", type);
+		ft_fprintf(2, "ft_select: Terminal type %s is not defined\n", type);
 	return (1);
 }
 
 static void	init_original(struct termios original)
 {
-	tputs(tgetstr("te", NULL), 1, print_char);
+	//tputs(tgetstr("te", NULL), 1, print_char);
 	tputs(tgetstr("ve", NULL), 1, print_char);
 	tcsetattr(2, TCSAFLUSH, &original);
 }

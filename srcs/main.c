@@ -4,7 +4,7 @@ static void		check_params(int argc)
 {
 	if (argc < 2)
 	{
-		ft_printf("usage: ft_select [file ...]\n");
+		ft_fprintf(2, "usage: ft_select [file ...]\n");
 		exit (0);
 	}
 }
