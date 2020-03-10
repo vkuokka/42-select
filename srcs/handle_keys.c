@@ -17,7 +17,7 @@ static void	check_other(int sum, t_terminal *term)
 		config_terminal(1, term);
 		free(term->select);
 		free(term);
-		tputs(tgetstr("cr", NULL), 1, print_char);	
+		tputs(tgetstr("cl", NULL), 1, print_char);	
 		tputs(tgetstr("cd", NULL), 1, print_char);
 		exit(0);
 	}

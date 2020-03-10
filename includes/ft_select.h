@@ -3,8 +3,10 @@
 #define FT_SELECT_H
 
 # include "ft_printf.h"
+# include <sys/ioctl.h>
 # include <termios.h>
 # include <term.h>
+# include <signal.h>
 
 # define KEY_SIZE 4
 # define ENTER 10
@@ -21,6 +23,7 @@ typedef struct		s_terminal
 {
 	struct termios	original;
 	struct termios	raw;
+	struct winsize	size;
 	char		**args;
 	size_t		length;
 	char		*select;
@@ -28,6 +31,7 @@ typedef struct		s_terminal
 }			t_terminal;
 
 void			config_terminal(int reset, t_terminal *term);
+void			signal_setup(void);
 void			display_arguments(t_terminal *term);
 void			listen_keys(t_terminal *term);
 int			print_char(int c);

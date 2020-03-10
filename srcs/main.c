@@ -13,8 +13,10 @@ static void		display_loop(t_terminal *term)
 {
 	while (1)
 	{
-		tputs(tgetstr("cr", NULL), 1, print_char);	
+		tputs(tgetstr("cl", NULL), 1, print_char);	
 		tputs(tgetstr("cd", NULL), 1, print_char);
+		signal_setup();
+		ioctl(0, TIOCGWINSZ, &term->size);
 		display_arguments(term);
 		listen_keys(term);
 	}
