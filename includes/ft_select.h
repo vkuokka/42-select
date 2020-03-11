@@ -26,6 +26,7 @@ typedef struct		s_terminal
 	struct winsize	size;
 	char		**args;
 	size_t		length;
+	size_t		max_len;
 	char		*select;
 	size_t		cursor;
 }			t_terminal;
@@ -35,6 +36,7 @@ void			signal_setup(void);
 void			display_arguments(t_terminal *term);
 void			listen_keys(t_terminal *term);
 int			print_char(int c);
+size_t			find_longest(char **args);
 int			delete_element(t_terminal *term);
 void			print_selected(t_terminal *term);
 

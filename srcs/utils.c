@@ -14,3 +14,17 @@ void		print_selected(t_terminal *term)
 		if (term->select[i])
 			ft_fprintf(1, "%s ", term->args[i]);
 }
+
+size_t		find_longest(char **args)
+{
+	size_t	i;
+	size_t	longest;
+	size_t	len;
+
+	 i = 0;
+	 longest = ft_strlen(args[i]);
+	 while(args[++i])
+		 if ((len = ft_strlen(args[i])) > longest)
+	 		longest = len;
+	return (longest + 1);
+}

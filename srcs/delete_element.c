@@ -17,6 +17,6 @@ int		delete_element(t_terminal *term)
 		term->cursor--;
 	if (!term->length)
 		return (1);
-	else
-		return (0);
+	term->max_len = find_longest(term->args);
+	return (0);
 }

@@ -35,6 +35,7 @@ int			main(int argc, char **argv)
 	term->raw = term->original;
 	term->args = ++argv;
 	term->length = --argc;
+	term->max_len = find_longest(term->args);
 	term->cursor = 0;
 	term->select = (char *)malloc(sizeof(char) * argc);
 	if (!term->select)
