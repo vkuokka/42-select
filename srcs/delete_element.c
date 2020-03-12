@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_element.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/12 16:28:13 by vkuokka           #+#    #+#             */
+/*   Updated: 2020/03/12 17:01:54 by vkuokka          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_select.h"
 
 int		delete_element(t_terminal *term)
@@ -17,6 +29,6 @@ int		delete_element(t_terminal *term)
 		term->cursor--;
 	if (!term->length)
 		return (1);
-	term->max_len = find_longest(term->args);
+	term->max_len = max_length(term->args);
 	return (0);
 }

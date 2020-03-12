@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   config_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/12 16:15:15 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/03/12 17:00:37 by vkuokka          ###   ########.fr       */
+/*   Created: 2020/03/12 16:24:38 by vkuokka           #+#    #+#             */
+/*   Updated: 2020/03/12 16:24:40 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int			print_char(int c)
+static void	signal_resize(int signum)
 {
-	return (write(0, &c, 1));
+	if (signum == SIGWINCH)
+	{
+		tputs(tgetstr("cl", NULL), 1, print_char);
+		tputs(tgetstr("cd", NULL), 1, print_char);
+		ioctl(2, TIOCSTI, "");
+	}
 }
 
-size_t		max_length(char **args)
+void		config_signal(void)
 {
-	size_t	i;
-	size_t	max;
-	size_t	len;
-
-	i = 0;
-	max = ft_strlen(args[i]);
-	while (args[++i])
-	{
-		len = ft_strlen(args[i]);
-		if (len > max)
-			max = len;
-	}
-	return (max + 1);
+	signal(SIGWINCH, signal_resize);
 }
