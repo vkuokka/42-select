@@ -44,7 +44,7 @@ typedef struct		s_terminal
 }					t_terminal;
 
 int					config_terminal(int reset, t_terminal *term);
-void				config_signal(void);
+void				config_signal(t_terminal *term);
 void				display_arguments(t_terminal *term);
 void				listen_keys(t_terminal *term);
 int					print_char(int c);

@@ -29,7 +29,7 @@ static void		display_loop(t_terminal *term)
 		tputs(tgetstr("cl", NULL), 1, print_char);
 		tputs(tgetstr("cd", NULL), 1, print_char);
 		ioctl(2, TIOCGWINSZ, &term->size);
-		config_signal();
+		config_signal(term);
 		display_arguments(term);
 		listen_keys(term);
 	}

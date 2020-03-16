@@ -12,6 +12,8 @@
 
 #include "ft_select.h"
 
+t_terminal *g_term;
+
 static void	signal_resize(int signum)
 {
 	if (signum == SIGWINCH)
@@ -22,7 +24,29 @@ static void	signal_resize(int signum)
 	}
 }
 
-void		config_signal(void)
+static void	signal_suspend(int signum)
 {
+	if (signum == SIGTSTP)
+	{
+		signal(SIGTSTP, SIG_DFL);
+		config_terminal(1, g_term);
+		ioctl(2, TIOCSTI, "\x1a");
+	}
+}
+
+static void	signal_continue(int signum)
+{
+	if (signum == SIGCONT)
+	{
+		config_terminal(0, g_term);
+		ioctl(2, TIOCSTI, "");
+	}
+}
+
+void		config_signal(t_terminal *term)
+{
+	g_term = term;
 	signal(SIGWINCH, signal_resize);
+	signal(SIGTSTP, signal_suspend);
+	signal(SIGCONT, signal_continue);
 }
