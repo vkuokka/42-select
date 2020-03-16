@@ -43,10 +43,26 @@ static void	signal_continue(int signum)
 	}
 }
 
+static void	signal_kill(int signum)
+{
+	if (signum)
+	{
+		config_terminal(0, g_term);
+		free(g_term->select);
+		free(g_term);
+		exit(0);
+	}
+}
+
 void		config_signal(t_terminal *term)
 {
 	g_term = term;
 	signal(SIGWINCH, signal_resize);
 	signal(SIGTSTP, signal_suspend);
 	signal(SIGCONT, signal_continue);
+	signal(SIGINT, signal_kill);
+	signal(SIGSTOP, signal_kill);
+	signal(SIGKILL, signal_kill);
+	signal(SIGQUIT, signal_kill);
+	signal(SIGABRT, signal_kill);
 }
