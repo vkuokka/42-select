@@ -47,7 +47,7 @@ static void	signal_kill(int signum)
 {
 	if (signum)
 	{
-		config_terminal(0, g_term);
+		config_terminal(1, g_term);
 		free(g_term->select);
 		free(g_term);
 		exit(0);
