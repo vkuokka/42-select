@@ -28,7 +28,7 @@ static void		display_loop(t_terminal *term)
 	{
 		tputs(tgetstr("cl", NULL), 1, print_char);
 		tputs(tgetstr("cd", NULL), 1, print_char);
-		ioctl(2, TIOCGWINSZ, &term->size);
+		ioctl(SELECT_FD, TIOCGWINSZ, &term->size);
 		config_signal(term);
 		display_arguments(term);
 		listen_keys(term);
@@ -44,7 +44,7 @@ int				main(int argc, char **argv)
 	term = (t_terminal *)malloc(sizeof(t_terminal));
 	if (!term)
 		return (1);
-	tcgetattr(2, &term->original);
+	tcgetattr(SELECT_FD, &term->original);
 	term->raw = term->original;
 	term->args = ++argv;
 	term->length = --argc;

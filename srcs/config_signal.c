@@ -20,7 +20,7 @@ static void	signal_resize(int signum)
 	{
 		tputs(tgetstr("cl", NULL), 1, print_char);
 		tputs(tgetstr("cd", NULL), 1, print_char);
-		ioctl(2, TIOCSTI, "");
+		ioctl(SELECT_FD, TIOCSTI, "");
 	}
 }
 
@@ -30,7 +30,7 @@ static void	signal_suspend(int signum)
 	{
 		signal(SIGTSTP, SIG_DFL);
 		config_terminal(1, g_term);
-		ioctl(2, TIOCSTI, "\x1a");
+		ioctl(SELECT_FD, TIOCSTI, "\x1a");
 	}
 }
 
@@ -39,7 +39,7 @@ static void	signal_continue(int signum)
 	if (signum == SIGCONT)
 	{
 		config_terminal(0, g_term);
-		ioctl(2, TIOCSTI, "");
+		ioctl(SELECT_FD, TIOCSTI, "");
 	}
 }
 

@@ -75,7 +75,7 @@ void		listen_keys(t_terminal *term)
 	size_t	i;
 	int		sum;
 
-	bytes = read(2, key, KEY_SIZE);
+	bytes = read(SELECT_FD, key, KEY_SIZE);
 	key[bytes] = '\0';
 	i = -1;
 	sum = 0;

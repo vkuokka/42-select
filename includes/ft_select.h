@@ -20,13 +20,13 @@
 # include <term.h>
 # include <signal.h>
 
+# define SELECT_FD 2
 # define KEY_SIZE 4
+
 # define ENTER 10
 # define ESC 27
 # define SPACE 32
 # define BACK 127
-# define UP 183
-# define DOWN 184
 # define RIGHT 185
 # define LEFT 186
 # define DEL 295
