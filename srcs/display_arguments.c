@@ -29,6 +29,7 @@ static void		print_argument(t_terminal *term, size_t i)
 	!pad ? program_exit(term, 1) : 0;
 	ft_memset(pad, 32, len);
 	write(SELECT_FD, pad, len);
+	free(pad);
 }
 
 static size_t	check_size(t_terminal *term)
