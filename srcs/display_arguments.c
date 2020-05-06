@@ -21,13 +21,12 @@ static void		print_argument(t_terminal *term, size_t i)
 		tputs(tgetstr("us", NULL), 1, print_char);
 	if (term->select[i])
 		tputs(tgetstr("so", NULL), 1, print_char);
-	write(SELECT_FD, term->args[i], ft_strlen(term->args[i]));
+	ft_putstr_fd(term->args[i], SELECT_FD);
 	tputs(tgetstr("ue", NULL), 1, print_char);
 	tputs(tgetstr("se", NULL), 1, print_char);
 	len = term->max_len - ft_strlen(term->args[i]);
 	pad = (char *)malloc(sizeof(char) * len);
-	if (!pad)
-		return ;
+	!pad ? program_exit(term, 1) : 0;
 	ft_memset(pad, 32, len);
 	write(SELECT_FD, pad, len);
 }
@@ -39,7 +38,7 @@ static size_t	check_size(t_terminal *term)
 	line_max = term->size.ws_col / term->max_len;
 	if (line_max * term->size.ws_row < term->length)
 	{
-		ft_fprintf(SELECT_FD, "Unable to show all elements");
+		ft_putstr_fd("Unable to show all elements.", SELECT_FD);
 		return (0);
 	}
 	return (line_max);

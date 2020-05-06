@@ -22,7 +22,7 @@ static void	print_selected(t_terminal *term)
 	while (++i < term->length)
 		if (term->select[i])
 		{
-			write(1, term->args[i], ft_strlen(term->args[i]));
+			ft_putstr(term->args[i]);
 			write(1, " ", 1);
 			printed = 1;
 		}
@@ -43,12 +43,7 @@ static void	check_arrows(int sum, t_terminal *term)
 static void	check_other(int sum, t_terminal *term)
 {
 	if (sum == ESC)
-	{
-		config_terminal(1, term);
-		free(term->select);
-		free(term);
-		exit(0);
-	}
+		program_exit(term, 0);
 	else if (sum == SPACE)
 	{
 		term->select[term->cursor] = \
