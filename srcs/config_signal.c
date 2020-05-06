@@ -18,6 +18,7 @@ static void	signal_resize(int signum)
 {
 	if (signum == SIGWINCH)
 	{
+		ioctl(SELECT_FD, TIOCGWINSZ, &g_term->size);
 		tputs(tgetstr("cl", NULL), 1, print_char);
 		ioctl(SELECT_FD, TIOCSTI, "");
 	}

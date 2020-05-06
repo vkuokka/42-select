@@ -17,7 +17,6 @@ static void		display_loop(t_terminal *term)
 	while (1)
 	{
 		tputs(tgetstr("cl", NULL), 1, print_char);
-		ioctl(SELECT_FD, TIOCGWINSZ, &term->size);
 		config_signal(term);
 		display_arguments(term);
 		listen_keys(term);
@@ -37,6 +36,7 @@ int				main(int argc, char **argv)
 	!term ? program_exit(NULL, 1) : 0;
 	tcgetattr(SELECT_FD, &term->original);
 	term->raw = term->original;
+	ioctl(SELECT_FD, TIOCGWINSZ, &term->size);
 	term->args = ++argv;
 	term->length = --argc;
 	term->max_len = max_length(term->args);

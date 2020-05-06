@@ -24,8 +24,8 @@ static void	init_shell(t_terminal *term)
 	if (success > 0)
 	{
 		tputs(tgetstr("ti", NULL), 1, print_char);
-		tputs(tgetstr("ho", NULL), 1, print_char);
 		tputs(tgetstr("vi", NULL), 1, print_char);
+		tputs(tgetstr("ho", NULL), 1, print_char);
 		term->raw.c_lflag &= ~(ICANON | ECHO);
 		tcsetattr(SELECT_FD, TCSAFLUSH, &term->raw);
 	}
