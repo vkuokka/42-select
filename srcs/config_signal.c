@@ -19,7 +19,6 @@ static void	signal_resize(int signum)
 	if (signum == SIGWINCH)
 	{
 		tputs(tgetstr("cl", NULL), 1, print_char);
-		tputs(tgetstr("cd", NULL), 1, print_char);
 		ioctl(SELECT_FD, TIOCSTI, "");
 	}
 }
@@ -46,12 +45,7 @@ static void	signal_continue(int signum)
 static void	signal_kill(int signum)
 {
 	if (signum)
-	{
-		config_terminal(1, g_term);
-		free(g_term->select);
-		free(g_term);
-		exit(0);
-	}
+		program_exit(g_term, 0);
 }
 
 void		config_signal(t_terminal *term)

@@ -12,22 +12,11 @@
 
 #include "ft_select.h"
 
-static int		check_params(int argc)
-{
-	if (argc < 2)
-	{
-		ft_fprintf(2, "usage: ft_select [file ...]\n");
-		return (1);
-	}
-	return (0);
-}
-
 static void		display_loop(t_terminal *term)
 {
 	while (1)
 	{
 		tputs(tgetstr("cl", NULL), 1, print_char);
-		tputs(tgetstr("cd", NULL), 1, print_char);
 		ioctl(SELECT_FD, TIOCGWINSZ, &term->size);
 		config_signal(term);
 		display_arguments(term);
@@ -39,23 +28,21 @@ int				main(int argc, char **argv)
 {
 	t_terminal	*term;
 
-	if (check_params(argc))
-		return (0);
+	if (argc < 2)
+	{
+		ft_putendl_fd("usage: ft_select [file ...]", 2);
+		exit(0);
+	}
 	term = (t_terminal *)malloc(sizeof(t_terminal));
-	if (!term)
-		return (1);
+	!term ? program_exit(NULL, 1) : 0;
 	tcgetattr(SELECT_FD, &term->original);
 	term->raw = term->original;
 	term->args = ++argv;
 	term->length = --argc;
 	term->max_len = max_length(term->args);
 	term->select = (char *)malloc(sizeof(char) * argc);
-	if (!term->select || config_terminal(0, term))
-	{
-		free(term->select);
-		free(term);
-		return (1);
-	}
+	!term->select ? program_exit(term, 1) : 0;
+	config_terminal(0, term);
 	ft_bzero(term->select, argc);
 	term->cursor = 0;
 	display_loop(term);

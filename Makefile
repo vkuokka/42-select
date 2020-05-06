@@ -13,6 +13,7 @@
 NAME =	ft_select
 
 SRCS =	srcs/main.c \
+	srcs/program_exit.c \
 	srcs/config_terminal.c \
 	srcs/config_signal.c \
 	srcs/listen_keys.c \
