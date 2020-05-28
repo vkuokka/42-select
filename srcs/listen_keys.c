@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:29:47 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/03/12 17:02:23 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/05/28 12:53:53 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print_selected(t_terminal *term)
 {
-	int	printed;
+	int		printed;
 	size_t	i;
 
 	printed = 0;
