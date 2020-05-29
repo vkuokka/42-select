@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/03/12 16:57:01 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/05/29 10:46:17 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int				main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		ft_putendl_fd("usage: ft_select [file ...]", 2);
+		ft_putendl_fd("ft_select: usage: ft_select arg [arg] ...", 2);
 		exit(0);
 	}
 	term = (t_terminal *)malloc(sizeof(t_terminal));
