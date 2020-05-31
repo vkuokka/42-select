@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/05/29 10:46:17 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/05/29 12:14:19 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void		display_loop(t_terminal *term)
 	while (1)
 	{
 		tputs(tgetstr("cl", NULL), 1, print_char);
-		config_signal(term);
 		display_arguments(term);
 		listen_keys(term);
 	}
@@ -43,6 +42,7 @@ int				main(int argc, char **argv)
 	term->select = (char *)malloc(sizeof(char) * argc);
 	!term->select ? program_exit(term, 1) : 0;
 	config_terminal(0, term);
+	config_signal(term);
 	ft_bzero(term->select, argc);
 	term->cursor = 0;
 	display_loop(term);
