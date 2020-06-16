@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:29:47 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/05/28 12:53:53 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/16 18:13:06 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,10 @@ static void	check_other(int sum, t_terminal *term)
 	}
 	else if (sum == ENTER)
 	{
-		config_terminal(1, term);
+		tputs(tgetstr("te", NULL), 1, print_char);
+		tputs(tgetstr("ve", NULL), 1, print_char);
 		print_selected(term);
-		free(term->select);
-		free(term);
-		exit(0);
+		program_exit(term, 0);
 	}
 	else if (sum == BACK || sum == DEL)
 		if (delete_element(term))

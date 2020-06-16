@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/05/29 12:14:19 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/16 18:16:15 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ int				main(int argc, char **argv)
 		ft_putendl_fd("ft_select: usage: ft_select arg [arg] ...", 2);
 		exit(0);
 	}
+	config_termcaps();
+	tputs(tgetstr("ti", NULL), 1, print_char);
+	tputs(tgetstr("vi", NULL), 1, print_char);
+	tputs(tgetstr("ho", NULL), 1, print_char);
 	term = (t_terminal *)malloc(sizeof(t_terminal));
 	!term ? program_exit(NULL, 1) : 0;
-	tcgetattr(SELECT_FD, &term->original);
-	term->raw = term->original;
-	ioctl(SELECT_FD, TIOCGWINSZ, &term->size);
 	term->args = ++argv;
 	term->length = --argc;
 	term->max_len = max_length(term->args);
 	term->select = (char *)malloc(sizeof(char) * argc);
 	!term->select ? program_exit(term, 1) : 0;
 	config_terminal(0, term);
-	config_signal(term);
 	ft_bzero(term->select, argc);
 	term->cursor = 0;
 	display_loop(term);

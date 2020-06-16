@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:51:37 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/03/12 16:52:06 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/16 18:02:53 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void				listen_keys(t_terminal *term);
 int					print_char(int c);
 size_t				max_length(char **args);
 int					delete_element(t_terminal *term);
+void				config_termcaps(void);
 
 #endif

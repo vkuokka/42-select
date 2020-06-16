@@ -6,7 +6,7 @@
 #    By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 12:10:34 by vkuokka           #+#    #+#              #
-#    Updated: 2020/03/12 16:29:06 by vkuokka          ###   ########.fr        #
+#    Updated: 2020/06/16 18:04:51 by vkuokka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME =	ft_select
 
 SRCS =	srcs/main.c \
 	srcs/program_exit.c \
+	srcs/config_termcaps.c \
 	srcs/config_terminal.c \
 	srcs/config_signal.c \
 	srcs/listen_keys.c \
