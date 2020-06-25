@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:51:37 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/16 18:02:53 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/25 03:09:11 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define FT_SELECT_H
 
-# include "ft_printf.h"
+# include <stdlib.h>
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <term.h>

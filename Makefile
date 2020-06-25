@@ -6,13 +6,13 @@
 #    By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 12:10:34 by vkuokka           #+#    #+#              #
-#    Updated: 2020/06/16 18:04:51 by vkuokka          ###   ########.fr        #
+#    Updated: 2020/06/25 03:05:49 by vkuokka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	ft_select
+NAME = ft_select
 
-SRCS =	srcs/main.c \
+SRCS = srcs/main.c \
 	srcs/program_exit.c \
 	srcs/config_termcaps.c \
 	srcs/config_terminal.c \
@@ -22,22 +22,29 @@ SRCS =	srcs/main.c \
 	srcs/display_arguments.c \
 	srcs/utils.c \
 
-INCL =	includes/
-INCL1 = libftprintf/includes
-INCL2 = libftprintf/libft/includes
+INCL = includes/
 
-LIB = ftprintf
-LIBFOL = libftprintf/
+LIB = ft
+LIBFOL = libft/
+LIBINCL = libft/includes/
+
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 $(NAME):
-	make -C libftprintf/
-	gcc -Wall -Werror -Wextra -I $(INCL) -I $(INCL1) -I $(INCL2) $(SRCS) -L$(LIBFOL) -l$(LIB) -ltermcap -o $(NAME)
+	-@git clone https://github.com/vkuokka/42-libft.git libft
+	@echo "Building library..."
+	@make -C libft/
+	@echo "Compiling program..."
+	@gcc $(FLAGS) -I $(INCL) -I $(LIBINCL) $(SRCS) -L$(LIBFOL) -l$(LIB) -ltermcap -o $(NAME)
+	@echo "Done"
 clean:
-	make -C libftprintf/ clean
+	@make -C libft/ clean
 
 fclean: clean
-	make -C libftprintf/ fclean
-	rm -f $(NAME)
+	@make -C libft/ fclean
+	@echo "Removing binary..."
+	@rm -f $(NAME)
+	@echo "Done"
 
 re: fclean all

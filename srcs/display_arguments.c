@@ -6,11 +6,13 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:53:44 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/03/12 17:01:49 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/25 02:41:34 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+#include "string.h"
+#include "print.h"
 
 static void		print_argument(t_terminal *term, size_t i)
 {

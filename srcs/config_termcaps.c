@@ -6,11 +6,12 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 11:10:04 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/16 18:05:37 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/25 03:06:29 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+#include "print.h"
 
 /*
 ** Termcaps is used for moving cursor position around the screen.
