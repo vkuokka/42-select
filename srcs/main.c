@@ -6,12 +6,12 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/25 02:42:46 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/06/26 01:02:58 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-#include "strings.h"
+#include "memory.h"
 #include "print.h"
 
 static void		display_loop(t_terminal *term)
