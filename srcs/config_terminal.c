@@ -16,7 +16,7 @@
 ** Chooses action according to reset value. If reset value
 ** is positive, It gathers information about the window size
 ** for term struct and turns off ICANON and ECHO. If it is zero
-** the function Configurates the terminal and SIGSTP as they were
+** the function Configurates the terminal as it was
 ** before the program started.
 */
 
