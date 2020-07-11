@@ -9,6 +9,7 @@ Small user interface for selecting arguments. Program displays arguments in a li
 
 Clone repository and compile the program into your current working directory with the following commands:  
 $ `git clone https://github.com/vkuokka/42-select.git ft_select`  
+$ `cd ft_select`  
 $ `make`  
 Now you should have binary file inside the repository which you can run with the following command:  
 $ `./ft_select`  
