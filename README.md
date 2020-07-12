@@ -1,6 +1,6 @@
 # 42-select
 Hive Helsinki project.
-
+___
 ### Introduction
 Small UI for selecting arguments. Program prints arguments to terminal window and user can interact with
 the list using specific keybindings. These keybindings are listed in this readme.
