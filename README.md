@@ -1,22 +1,26 @@
 # 42-select
 Hive Helsinki project.
 
-**What?**
+### Introduction
+Small UI for selecting arguments. Program prints arguments to terminal window and user can interact with
+the list using specific keybindings. These keybindings are listed in this readme.
 
-Small user interface for selecting arguments. Program displays arguments in a list and user can interact with the list using specific keys. The keys are listed in this readme.
-
-**Compilation**
-
-Clone repository and compile the program into your current working directory with the following commands:  
-$ `git clone https://github.com/vkuokka/42-select.git ft_select`  
-$ `cd ft_select`  
-$ `make`  
-Now you should have binary file inside the repository which you can run with the following command:  
-$ `./ft_select`  
-`ft_select: usage: ft_select arg [arg] ...`
+### Compilation
+Clone repository into your current working directory and compile the program with the following commands:
+```
+$> git clone https://github.com/vkuokka/42-select.git ft_select  
+$> cd ft_select  
+$> make  
+```
+Now you should have binary file inside the repository which you can run with the following command:
+```
+$> ./ft_select  
+ft_select: usage: ft_select arg [arg] ...
+```
 
 ![User interface](select_ui.png)
 
+### Keybindings
 Key | Action
 ------------ | -------------
 <kbd>right</kbd> | Move cursor to the right
@@ -27,4 +31,6 @@ Key | Action
 <kbd>backspace</kbd>/<kbd>del</kbd> | Remove current argument from the list
 
  Selected arguments are printed to the standard output, which enables them to be used as arguments for another command.  
- `ls -l ´ft_select srcs/*´`
+ ```
+ ls -l `ft_select srcs/*`
+```
