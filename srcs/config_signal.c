@@ -6,11 +6,12 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:24:38 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/07/21 16:33:16 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 17:07:18 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+#include <unistd.h>
 
 t_terminal *g_term;
 
@@ -18,7 +19,7 @@ static void	signal_resize(int signum)
 {
 	if (signum == SIGWINCH)
 	{
-		ioctl(SELECT_FD, TIOCGWINSZ, &g_term->size);
+		ioctl(STDIN_FILENO, TIOCGWINSZ, &g_term->size);
 		tputs(tgetstr("cl", NULL), 1, print_char);
 		ioctl(SELECT_FD, TIOCSTI, "");
 	}
