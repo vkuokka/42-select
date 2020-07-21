@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:29:47 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/07/21 17:07:56 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 22:38:13 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		listen_keys(t_terminal *term)
 	size_t	i;
 	int		sum;
 
-	bytes = read(SELECT_FD, key, KEY_SIZE);
+	bytes = read(STDIN_FILENO, key, KEY_SIZE);
 	key[bytes] = '\0';
 	i = -1;
 	sum = 0;

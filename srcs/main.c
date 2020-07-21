@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/07/21 17:07:04 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 22:51:27 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int				main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		ft_putendl_fd("ft_select: usage: ft_select arg [arg] ...", 2);
+		ft_putendl_fd("ft_select: usage: ft_select arg [arg] ...", \
+		STDERR_FILENO);
 		exit(0);
 	}
 	config_termcaps();
