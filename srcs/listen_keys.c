@@ -6,31 +6,13 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:29:47 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/25 02:41:44 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 16:32:48 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 #include "strings.h"
 #include "print.h"
-
-static void	print_selected(t_terminal *term)
-{
-	int		printed;
-	size_t	i;
-
-	printed = 0;
-	i = -1;
-	while (++i < term->length)
-		if (term->select[i])
-		{
-			ft_putstr(term->args[i]);
-			write(1, " ", 1);
-			printed = 1;
-		}
-	if (printed)
-		write(1, "\n", 1);
-}
 
 static void	check_arrows(int sum, t_terminal *term)
 {
@@ -45,7 +27,7 @@ static void	check_arrows(int sum, t_terminal *term)
 static void	check_other(int sum, t_terminal *term)
 {
 	if (sum == ESC)
-		program_exit(term, 0);
+		program_exit(term, 0, 0);
 	else if (sum == SPACE)
 	{
 		term->select[term->cursor] = \
@@ -54,10 +36,7 @@ static void	check_other(int sum, t_terminal *term)
 	}
 	else if (sum == ENTER)
 	{
-		tputs(tgetstr("te", NULL), 1, print_char);
-		tputs(tgetstr("ve", NULL), 1, print_char);
-		print_selected(term);
-		program_exit(term, 0);
+		program_exit(term, 1, 0);
 	}
 	else if (sum == BACK || sum == DEL)
 		if (delete_element(term))

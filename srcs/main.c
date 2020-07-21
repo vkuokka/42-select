@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/26 01:02:58 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 16:32:28 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int				main(int argc, char **argv)
 	tputs(tgetstr("vi", NULL), 1, print_char);
 	tputs(tgetstr("ho", NULL), 1, print_char);
 	term = (t_terminal *)malloc(sizeof(t_terminal));
-	!term ? program_exit(NULL, 1) : 0;
+	!term ? program_exit(NULL, 0, 1) : 0;
 	term->args = ++argv;
 	term->length = --argc;
 	term->max_len = max_length(term->args);
 	term->select = (char *)malloc(sizeof(char) * argc);
-	!term->select ? program_exit(term, 1) : 0;
+	!term->select ? program_exit(term, 0, 1) : 0;
 	config_terminal(0, term);
 	ft_bzero(term->select, argc);
 	term->cursor = 0;

@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:51:37 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/25 03:09:11 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 16:33:29 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_terminal
 	size_t			cursor;
 }					t_terminal;
 
-void				program_exit(t_terminal *term, int num);
+void				program_exit(t_terminal *term, int print, int num);
 void				config_terminal(int reset, t_terminal *term);
 void				config_signal(t_terminal *term);
 void				display_arguments(t_terminal *term);

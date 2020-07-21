@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:24:38 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/25 02:30:31 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 16:33:16 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	signal_continue(int signum)
 static void	signal_kill(int signum)
 {
 	if (signum)
-		program_exit(g_term, 0);
+		program_exit(g_term, 0, 0);
 }
 
 void		config_signal(t_terminal *term)

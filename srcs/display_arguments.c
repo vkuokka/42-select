@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:53:44 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/29 15:24:43 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/21 16:33:03 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		print_argument(t_terminal *term, size_t i)
 	tputs(tgetstr("se", NULL), 1, print_char);
 	len = term->max_len - ft_strlen(term->args[i]);
 	pad = (char *)malloc(sizeof(char) * len);
-	!pad ? program_exit(term, 1) : 0;
+	!pad ? program_exit(term, 0, 1) : 0;
 	ft_memset(pad, 32, len);
 	write(SELECT_FD, pad, len);
 	free(pad);
