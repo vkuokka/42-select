@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:24:38 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/07/21 17:07:18 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/22 16:29:08 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	signal_suspend(int signum)
 		tputs(tgetstr("te", NULL), 1, print_char);
 		tputs(tgetstr("ve", NULL), 1, print_char);
 		signal(SIGTSTP, SIG_DFL);
-		ioctl(1, TIOCSTI, "\x1a");
+		ioctl(STDIN_FILENO, TIOCSTI, "\x1a");
 	}
 }
 
@@ -45,7 +45,7 @@ static void	signal_continue(int signum)
 		tputs(tgetstr("ti", NULL), 1, print_char);
 		tputs(tgetstr("vi", NULL), 1, print_char);
 		tputs(tgetstr("ho", NULL), 1, print_char);
-		ioctl(1, TIOCSTI, "");
+		ioctl(STDIN_FILENO, TIOCSTI, "");
 	}
 }
 

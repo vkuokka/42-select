@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/09 09:27:02 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/07/21 16:43:09 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/22 16:22:15 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	print_selected(t_terminal *term)
 		if (term->select[i])
 		{
 			ft_putstr(term->args[i]);
-			write(1, " ", 1);
+			ft_putchar(' ');
 			printed = 1;
 		}
 	if (printed)
-		write(1, "\n", 1);
+		ft_putchar('\n');
 }
 
 void		program_exit(t_terminal *term, int print, int num)

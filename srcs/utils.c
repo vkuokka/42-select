@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:15:15 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/06/25 02:42:05 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/22 16:21:15 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int			print_char(int c)
 {
-	return (write(0, &c, 1));
+	return (write(STDIN_FILENO, &c, 1));
 }
 
 size_t		max_length(char **args)
