@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:28:03 by vkuokka           #+#    #+#             */
-/*   Updated: 2020/07/21 22:51:27 by vkuokka          ###   ########.fr       */
+/*   Updated: 2020/07/22 10:59:14 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ int				main(int argc, char **argv)
 	tputs(tgetstr("vi", NULL), 1, print_char);
 	tputs(tgetstr("ho", NULL), 1, print_char);
 	display_loop(term);
+	return (0);
 }
