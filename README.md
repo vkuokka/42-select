@@ -2,7 +2,7 @@
 Hive Helsinki project.
 ___
 ### Introduction
-Small UI for selecting arguments. Program prints arguments to terminal window and user can interact with
+Small UI for selecting arguments. Program prints arguments into standard output and user can interact with
 the list using specific keybindings. These keybindings are listed in this readme.
 
 ### Compilation
