@@ -2,8 +2,7 @@
 Hive Helsinki project.
 ___
 ### Introduction
-Small UI for selecting arguments. Program prints arguments into standard output and user can interact with
-the list using specific keybindings. These keybindings are listed in this readme.
+This project is meant to make you code a small program using termcaps which will allow you to pick from a list of choices and return it to your shell.
 
 ### Compilation
 Clone repository into your current working directory and compile the program with the following commands:
