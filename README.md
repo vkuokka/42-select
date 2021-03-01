@@ -2,6 +2,11 @@
 This project is meant to make you code a small program using termcaps which will allow you to pick from a list of choices and return it to your shell.
 
 ### Compilation
+
+#### Required package installation (linux)
+```
+$> sudo apt install libncurses5-dev
+```
 Clone repository into your current working directory and compile the program with the following commands:
 ```
 $> git clone https://github.com/vkuokka/42-select.git ft_select  
